@@ -10,6 +10,8 @@ import { Person } from '../models/person';
 })
 export class PersonService {
 
+  constructor(private http: HttpClient) { }
+
   private httpOption = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
   };
@@ -17,6 +19,4 @@ export class PersonService {
   getAllPeople(): Observable<Person[]> {
     return this.http.get<Person[]>("/api/allPeople", this.httpOption);
   }
-
-  constructor(private http: HttpClient) { }
 }

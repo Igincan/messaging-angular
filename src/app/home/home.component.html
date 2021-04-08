@@ -22,4 +22,28 @@
       <button mat-button>Call</button>
     </mat-card-actions>
   </mat-card>
+  <!------------------------------------------------------>
+  <mat-form-field appearance="fill">
+    <mat-label>Group</mat-label>
+    <mat-select [(ngModel)]="selectedGroup">
+      <mat-option *ngFor="let group of groups" [value]="group">
+        {{group.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-card *ngIf="selectedGroup" aria-hidden="true">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>group</mat-icon>
+      <mat-card-title>{{selectedGroup.name}}</mat-card-title>
+      <mat-card-subtitle>Group</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Regular group
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>OK</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
