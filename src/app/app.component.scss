@@ -1,3 +1,16 @@
 mat-toolbar {
   box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%);
+  position: fixed;
+  z-index: 2;
+  > button {
+    margin-right: 0.5rem;
+  }
+}
+.content {
+  padding: 5.5rem 4rem 2rem 4rem;
+}
+@media only screen and (max-width: 480px) {
+  .content {
+    padding: 3.4rem 1rem 1.5rem 1rem;
+  }
 }

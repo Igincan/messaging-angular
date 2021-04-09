@@ -1,7 +1,8 @@
 <mat-toolbar color="primary">
-  <button mat-button>First</button>
-  <button mat-button>Second</button>
-  <button mat-button>Third</button>
+  <button mat-button routerLink="home">Home</button>
+  <button mat-button routerLink="database">Database</button>
 </mat-toolbar>
 
-<app-home></app-home>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
