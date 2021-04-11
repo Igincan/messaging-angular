@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { GroupService } from 'src/app/services/group.service';
+import { GroupsService } from 'src/app/services/groups.service';
 
 import { Group } from 'src/app/models/group';
 
@@ -12,13 +12,15 @@ import { Group } from 'src/app/models/group';
 export class DatabaseGroupsComponent implements OnInit {
 
   groups: Group[] = [];
-  selectedGroup?: Group;
+  displayedColumns: string[] = [
+    "name"
+  ]
 
-  constructor(private groupService: GroupService) { }
+  constructor(private groupsService: GroupsService) { }
 
   ngOnInit(): void {
 
-    this.groupService.getAllGroups().subscribe((groups) => {
+    this.groupsService.getAllGroups().subscribe((groups) => {
       this.groups = groups;
     });
   }

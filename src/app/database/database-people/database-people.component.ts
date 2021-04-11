@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { PersonService } from 'src/app/services/person.service';
+import { PeopleService } from 'src/app/services/people.service';
 
 import { Person } from 'src/app/models/person';
 
@@ -18,11 +18,11 @@ export class DatabasePeopleComponent implements OnInit {
     "phoneNumber"
   ]
 
-  constructor(private personService: PersonService) { }
+  constructor(private peopleService: PeopleService) { }
 
   ngOnInit(): void {
 
-    this.personService.getAllPeople().subscribe((people) => {
+    this.peopleService.getAllPeople().subscribe((people) => {
       this.people = people;
     });
   }

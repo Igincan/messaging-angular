@@ -1,15 +1,3 @@
-mat-form-field {
+table {
   width: 100%;
-}
-mat-card {
-  margin-bottom: 2rem;
-  > mat-card-header {
-    > mat-icon {
-      background-color: lightgrey;
-      $size: 2.5rem;
-      width: $size;
-      height: $size;
-      font-size: $size;
-    }
-  }
 }
