@@ -5,4 +5,6 @@ export interface Person {
   lastName: string;
   phoneNumber: string;
   email?: string;
+
+  groupName?: string;
 }

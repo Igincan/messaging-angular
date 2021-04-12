@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { PeopleService } from 'src/app/services/people.service';
+import { GroupsService } from 'src/app/services/groups.service';
 
 import { Person } from 'src/app/models/person';
+import { Group } from 'src/app/models/group';
 
 @Component({
   selector: 'app-database-people',
@@ -12,18 +14,26 @@ import { Person } from 'src/app/models/person';
 export class DatabasePeopleComponent implements OnInit {
 
   people: Person[] = [];
+  groups: Group[] = [];
   displayedColumns: string[] = [
     "firstName",
     "lastName",
-    "phoneNumber"
+    "phoneNumber",
+    "group"
   ]
 
-  constructor(private peopleService: PeopleService) { }
+  constructor(private peopleService: PeopleService, private groupsService: GroupsService) { }
 
   ngOnInit(): void {
 
     this.peopleService.getAllPeople().subscribe((people) => {
-      this.people = people;
+      this.groupsService.getAllGroups().subscribe((groups) => {
+        this.groups = groups;
+        this.people = people.map((person) => {
+          person.groupName = groups.filter((group) => group.id === person.groupId)[0].name;
+          return person;
+        });
+      });
     });
   }
 

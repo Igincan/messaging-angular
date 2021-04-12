@@ -4,6 +4,9 @@ mat-toolbar {
   z-index: 2;
   > button {
     margin-right: 0.5rem;
+    .logo-img {
+      height: 2.25rem;
+    }
   }
 }
 .content {
