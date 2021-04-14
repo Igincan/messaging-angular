@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { PeopleService } from 'src/app/services/people.service';
-import { GroupsService } from 'src/app/services/groups.service';
-
 import { Person } from 'src/app/models/person';
 import { Group } from 'src/app/models/group';
 
@@ -13,8 +10,20 @@ import { Group } from 'src/app/models/group';
 })
 export class DatabasePeopleComponent implements OnInit {
 
-  @Input() people: Person[] = [];
-  @Input() groups: Group[] = [];
+  private _people: Person[] = [];
+  @Input() set people(value: Person[]) {
+    this._people = value;
+  }
+  get people(): Person[] {
+    return this._people;
+  }
+  private _groups: Group[] = [];
+  @Input() set groups(value: Group[]) {
+    this._groups = value;
+  }
+  get groups(): Group[] {
+    return this._groups;
+  }
   displayedColumns: string[] = [
     "firstName",
     "lastName",

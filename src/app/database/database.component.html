@@ -1,14 +1,14 @@
 <mat-drawer-container *ngIf="people.length">
   <mat-drawer mode="side" opened>
     <div class="content">
-      <button mat-fab color="primary" (click)="addEntity(tabs)">
+      <button mat-fab color="primary" (click)="showAddDialog()">
         <mat-icon>add</mat-icon>
       </button>
     </div>
   </mat-drawer>
 
   <mat-drawer-content>
-    <mat-tab-group mat-align-tabs="center" #tabs>
+    <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onSelectedTabChanged($event)">
       <mat-tab label="People" routerLink="database/people">
         <app-database-people [people]="people" [groups]="groups"></app-database-people>
       </mat-tab>
@@ -20,4 +20,5 @@
 
 </mat-drawer-container>
 
+<!-- LOADING ICON -->
 <mat-spinner *ngIf="!people.length"></mat-spinner>

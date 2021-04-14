@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 
 import { Group } from '../models/group';
+import { GroupForm } from '../models/forms/group-form';
 import { MessageResponse } from '../models/responses/message-response';
 
 @Injectable({
@@ -23,6 +24,10 @@ export class GroupsService {
 
   getGroup(id: number): Observable<Group> {
     return this.http.get<Group>(`/api/group/${id}`);
+  }
+
+  addGroup(group: GroupForm): Observable<Group> {
+    return this.http.post<Group>("/api/addGroup", group);
   }
 
   editGroup(group: Group): Observable<Group> {

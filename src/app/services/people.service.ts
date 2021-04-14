@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 
 import { Person } from '../models/person';
+import { PersonForm } from "../models/forms/person-form";
 import { MessageResponse } from '../models/responses/message-response';
 
 @Injectable({
@@ -23,6 +24,10 @@ export class PeopleService {
 
   getPerson(id: number): Observable<Person> {
     return this.http.get<Person>(`/api/person/${id}`);
+  }
+
+  addPerson(person: PersonForm): Observable<Person> {
+    return this.http.post<Person>("/api/addPerson", person);
   }
 
   editPerson(person: Person): Observable<Person> {

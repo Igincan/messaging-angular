@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Add Group</h1>
+<mat-dialog-content class="mat-typography">
+  <p>Enter group name:</p>
+  <mat-form-field appearance="fill" class="wide-field">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="group.name">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]=null>Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="group">Add</button>
+</mat-dialog-actions>

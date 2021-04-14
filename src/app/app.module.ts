@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
-import { MatSelectModule } from "@angular/material/select";
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
@@ -12,15 +12,22 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatTableModule } from "@angular/material/table";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from "@angular/material/select";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatabaseComponent } from './database/database.component';
 import { DatabasePeopleComponent } from './database/database-people/database-people.component';
 import { DatabaseGroupsComponent } from './database/database-groups/database-groups.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AddGroupDialogComponent } from './database/add-group-dialog/add-group-dialog.component';
+import { AddPersonDialogComponent } from './database/add-person-dialog/add-person-dialog.component';
+import { SendComponent } from './send/send.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +36,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     DatabaseComponent,
     DatabasePeopleComponent,
     DatabaseGroupsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AddGroupDialogComponent,
+    AddPersonDialogComponent,
+    SendComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +47,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatSelectModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
@@ -45,7 +54,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatTabsModule,
     MatTableModule,
     MatSidenavModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
