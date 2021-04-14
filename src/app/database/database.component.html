@@ -1,8 +1,23 @@
-<mat-tab-group mat-align-tabs="center">
-  <mat-tab label="People" routerLink="database/people">
-    <app-database-people></app-database-people>
-  </mat-tab>
-  <mat-tab label="Groups" routerLink="database/groups">
-    <app-database-groups></app-database-groups>
-  </mat-tab>
-</mat-tab-group>
+<mat-drawer-container *ngIf="people.length">
+  <mat-drawer mode="side" opened>
+    <div class="content">
+      <button mat-fab color="primary" (click)="addEntity(tabs)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <mat-tab-group mat-align-tabs="center" #tabs>
+      <mat-tab label="People" routerLink="database/people">
+        <app-database-people [people]="people" [groups]="groups"></app-database-people>
+      </mat-tab>
+      <mat-tab label="Groups" routerLink="database/groups">
+        <app-database-groups [groups]="groups"></app-database-groups>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+<mat-spinner *ngIf="!people.length"></mat-spinner>

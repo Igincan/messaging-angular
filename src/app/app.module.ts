@@ -10,6 +10,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatTableModule } from "@angular/material/table";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,7 +43,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatIconModule,
     MatToolbarModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatSidenavModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

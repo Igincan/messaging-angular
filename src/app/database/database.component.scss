@@ -1,0 +1,16 @@
+mat-drawer-container {
+  padding-top: 4rem;
+  mat-drawer {
+    .content {
+      padding-top: 4rem;
+      button {
+        margin: 2rem 1.2rem;
+      }
+    }
+  }
+}
+
+mat-spinner {
+  margin: 0 auto;
+  top: 10rem;
+}

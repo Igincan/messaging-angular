@@ -11,18 +11,14 @@ import { Group } from 'src/app/models/group';
 })
 export class DatabaseGroupsComponent implements OnInit {
 
-  groups: Group[] = [];
+  @Input() groups: Group[] = [];
   displayedColumns: string[] = [
     "name"
   ]
 
-  constructor(private groupsService: GroupsService) { }
+  constructor() { }
 
   ngOnInit(): void {
-
-    this.groupsService.getAllGroups().subscribe((groups) => {
-      this.groups = groups;
-    });
   }
 
 }

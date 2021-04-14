@@ -13,8 +13,8 @@ import { Group } from 'src/app/models/group';
 })
 export class DatabasePeopleComponent implements OnInit {
 
-  people: Person[] = [];
-  groups: Group[] = [];
+  @Input() people: Person[] = [];
+  @Input() groups: Group[] = [];
   displayedColumns: string[] = [
     "firstName",
     "lastName",
@@ -22,19 +22,9 @@ export class DatabasePeopleComponent implements OnInit {
     "group"
   ]
 
-  constructor(private peopleService: PeopleService, private groupsService: GroupsService) { }
+  constructor() { }
 
   ngOnInit(): void {
-
-    this.peopleService.getAllPeople().subscribe((people) => {
-      this.groupsService.getAllGroups().subscribe((groups) => {
-        this.groups = groups;
-        this.people = people.map((person) => {
-          person.groupName = groups.filter((group) => group.id === person.groupId)[0].name;
-          return person;
-        });
-      });
-    });
   }
 
 }
