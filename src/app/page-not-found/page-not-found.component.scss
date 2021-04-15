@@ -1,4 +1,9 @@
-.mat-display-2 {
-  padding-top: 2rem;
-  margin-bottom: 0;
+@import "../../styles/variables";
+
+.content {
+  padding: $content-padding;
+  .mat-display-2 {
+    padding-top: 2rem;
+    margin-bottom: 0;
+  }
 }
