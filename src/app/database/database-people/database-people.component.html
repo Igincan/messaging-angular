@@ -1,10 +1,10 @@
-<mat-form-field class="filter-field">
+<mat-form-field class="filter-field" *ngIf="filterIsShowed">
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter()" placeholder="Ex. Igor Novak"
          [(ngModel)]="filterInput">
 </mat-form-field>
 
-<div class="mat-elevation-z8 table-div">
+<div class="mat-elevation-z2 table-div">
   <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="firstName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>

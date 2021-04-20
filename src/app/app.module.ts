@@ -19,6 +19,8 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatSortModule } from "@angular/material/sort";
 import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +32,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AddGroupDialogComponent } from './database/add-group-dialog/add-group-dialog.component';
 import { AddPersonDialogComponent } from './database/add-person-dialog/add-person-dialog.component';
 import { SendComponent } from './send/send.component';
+import { SendMessageDialogComponent } from './send/send-message-dialog/send-message-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,8 @@ import { SendComponent } from './send/send.component';
     PageNotFoundComponent,
     AddGroupDialogComponent,
     AddPersonDialogComponent,
-    SendComponent
+    SendComponent,
+    SendMessageDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,9 @@ import { SendComponent } from './send/send.component';
     MatSelectModule,
     MatSnackBarModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTooltipModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

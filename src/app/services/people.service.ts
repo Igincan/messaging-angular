@@ -12,29 +12,29 @@ import { MessageResponse } from '../models/responses/message-response';
 })
 export class PeopleService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
-  private httpOption = {
+  private _httpOption = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
   };
 
   getAllPeople(): Observable<Person[]> {
-    return this.http.get<Person[]>("/api/allPeople", this.httpOption);
+    return this._http.get<Person[]>("/api/allPeople", this._httpOption);
   }
 
   getPerson(id: number): Observable<Person> {
-    return this.http.get<Person>(`/api/person/${id}`);
+    return this._http.get<Person>(`/api/person/${id}`);
   }
 
   addPerson(person: PersonForm): Observable<Person> {
-    return this.http.post<Person>("/api/addPerson", person);
+    return this._http.post<Person>("/api/addPerson", person);
   }
 
   editPerson(person: Person): Observable<Person> {
-    return this.http.put<Person>("/api/editPerson", person);
+    return this._http.put<Person>("/api/editPerson", person);
   }
 
   removePerson(id: number): Observable<MessageResponse> {
-    return this.http.delete<MessageResponse>(`api/removePerson/${id}`);
+    return this._http.delete<MessageResponse>(`api/removePerson/${id}`);
   }
 }

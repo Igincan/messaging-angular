@@ -38,6 +38,7 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   dataSource: MatTableDataSource<Person> = new MatTableDataSource(this._people);
+  @Input() filterIsShowed!: boolean;
 
   constructor() { }
 
