@@ -30,6 +30,7 @@ export class DatabaseComponent implements OnInit {
   filterIsShowed: boolean = false;
   @ViewChild(DatabasePeopleComponent) databasePeopleComponent!: DatabasePeopleComponent;
   @ViewChild(DatabaseGroupsComponent) databaseGroupsComponent!: DatabaseGroupsComponent;
+  removeIsShowed: boolean = false;
 
   constructor(
     private _groupsService: GroupsService,
