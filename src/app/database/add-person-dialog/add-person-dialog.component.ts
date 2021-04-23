@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 
 import { Group } from 'src/app/models/group';
 import { PersonForm } from 'src/app/models/forms/person-form';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-person-dialog',
@@ -10,10 +11,9 @@ import { PersonForm } from 'src/app/models/forms/person-form';
 })
 export class AddPersonDialogComponent implements OnInit {
 
-  groups: Group[] = [];
   person: PersonForm = {};
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public groups: Group[]) { }
 
   ngOnInit(): void {
   }

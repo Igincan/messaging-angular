@@ -34,7 +34,7 @@ export class GroupsService {
     return this._http.put<Group>("/api/editGroup", group);
   }
 
-  removeGroup(id: number): Observable<MessageResponse> {
-    return this._http.delete<MessageResponse>(`api/removeGroup/${id}`);
+  deleteGroup(id: number): Observable<MessageResponse> {
+    return this._http.delete<MessageResponse>(`api/deleteGroup/${id}`);
   }
 }

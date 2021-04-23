@@ -30,7 +30,7 @@ export class DatabaseComponent implements OnInit {
   filterIsShowed: boolean = false;
   @ViewChild(DatabasePeopleComponent) databasePeopleComponent!: DatabasePeopleComponent;
   @ViewChild(DatabaseGroupsComponent) databaseGroupsComponent!: DatabaseGroupsComponent;
-  removeIsShowed: boolean = false;
+  deleteIsShowed: boolean = true;
 
   constructor(
     private _groupsService: GroupsService,
@@ -66,11 +66,10 @@ export class DatabaseComponent implements OnInit {
   }
 
   showAddPersonDialog(): void {
-    let dialogRef = this._dialog.open(AddPersonDialogComponent);
-    let component = dialogRef.componentInstance;
-
-    component.groups = this.groups;
-    dialogRef.afterClosed().subscribe((person?: PersonForm) => {
+    let dialog = this._dialog.open(AddPersonDialogComponent, {
+      data: this.groups
+    });
+    dialog.afterClosed().subscribe((person?: PersonForm) => {
       if (person) {
         this._peopleService.addPerson(person).subscribe((newPerson: Person) => {
           this.people = this.people.slice(); // cloning because change occurred (===)

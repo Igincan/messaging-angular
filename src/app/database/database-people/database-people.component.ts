@@ -5,6 +5,11 @@ import { Group } from 'src/app/models/group';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from "@angular/material/table";
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { PeopleService } from 'src/app/services/people.service';
 
 @Component({
   selector: 'app-database-people',
@@ -34,13 +39,34 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
     "phoneNumber",
     "group"
   ];
+  specialColumns = {
+    editButton: "editButton",
+    deleteButton: "deleteButton"
+};
   filterInput: string = "";
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   dataSource: MatTableDataSource<Person> = new MatTableDataSource(this._people);
   @Input() filterIsShowed!: boolean;
+  _deleteIsShowed: boolean = false;
+  @Input() set deleteIsShowed(value: boolean) {
+    this._deleteIsShowed = value;
+    if (this._deleteIsShowed) {
+      this.displayedColumns.push(this.specialColumns.deleteButton);
+    } else {
+      this.displayedColumns = this.displayedColumns
+        .filter((column) => column !== this.specialColumns.deleteButton);
+    }
+  }
+  get deleteIsShowed() {
+    return this._deleteIsShowed;
+  }
 
-  constructor() { }
+  constructor(
+    private _dialog: MatDialog,
+    private _snackBar: MatSnackBar,
+    private _peopleService: PeopleService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -55,5 +81,22 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  showDeleteDialog(person: Person) {
+    let dialog = this._dialog.open(DeleteDialogComponent, {
+      data: `person ${person.firstName} ${person.lastName}`
+    });
+    dialog.afterClosed().subscribe((confirmed?: boolean) => {
+      if (confirmed) {
+        this._peopleService.deletePerson(person.id).subscribe(() => {
+          this._snackBar.open("Person deleted!", undefined, {
+            duration: 4000,
+            horizontalPosition: "start"
+          });
+          this.people = this.people.filter((filterPerson) => filterPerson.id !== person.id);
+        })
+      }
+    });
   }
 }

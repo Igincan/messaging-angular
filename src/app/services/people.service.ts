@@ -34,7 +34,7 @@ export class PeopleService {
     return this._http.put<Person>("/api/editPerson", person);
   }
 
-  removePerson(id: number): Observable<MessageResponse> {
-    return this._http.delete<MessageResponse>(`api/removePerson/${id}`);
+  deletePerson(id: number): Observable<MessageResponse> {
+    return this._http.delete<MessageResponse>(`api/deletePerson/${id}`);
   }
 }

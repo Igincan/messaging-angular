@@ -18,8 +18,8 @@
           </tr>
           <tr>
             <td>
-              <mat-slide-toggle [(ngModel)]="removeIsShowed">
-                Show remove
+              <mat-slide-toggle [(ngModel)]="deleteIsShowed">
+                Show delete
               </mat-slide-toggle>
             </td>
           </tr>
@@ -31,7 +31,9 @@
   <mat-drawer-content>
     <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onSelectedTabChanged($event)">
       <mat-tab label="People" routerLink="database/people">
-        <app-database-people [people]="people" [groups]="groups" [filterIsShowed]="filterIsShowed"></app-database-people>
+        <app-database-people [people]="people" [groups]="groups" [filterIsShowed]="filterIsShowed"
+                             [deleteIsShowed]="deleteIsShowed">
+        </app-database-people>
       </mat-tab>
       <mat-tab label="Groups" routerLink="database/groups">
         <app-database-groups [groups]="groups" [filterIsShowed]="filterIsShowed"></app-database-groups>

@@ -33,6 +33,7 @@ import { AddGroupDialogComponent } from './database/add-group-dialog/add-group-d
 import { AddPersonDialogComponent } from './database/add-person-dialog/add-person-dialog.component';
 import { SendComponent } from './send/send.component';
 import { SendMessageDialogComponent } from './send/send-message-dialog/send-message-dialog.component';
+import { DeleteDialogComponent } from './database/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SendMessageDialogComponent } from './send/send-message-dialog/send-mess
     AddGroupDialogComponent,
     AddPersonDialogComponent,
     SendComponent,
-    SendMessageDialogComponent
+    SendMessageDialogComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,

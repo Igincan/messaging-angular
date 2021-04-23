@@ -6,5 +6,10 @@
   margin-bottom: 22rem;
   table {
     width: 100%;
+    .mat-row {
+      &:hover {
+        background-color: #F5F5F5;
+      }
+    }
   }
 }
