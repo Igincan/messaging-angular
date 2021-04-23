@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SendMessageDialogComponent } from './send-message-dialog.component';
+import { ConfirmDialogComponent } from './confirm-dialog.component';
 
-describe('SendMessageDialogComponent', () => {
-  let component: SendMessageDialogComponent;
-  let fixture: ComponentFixture<SendMessageDialogComponent>;
+describe('ConfirmDialogComponent', () => {
+  let component: ConfirmDialogComponent;
+  let fixture: ComponentFixture<ConfirmDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SendMessageDialogComponent ]
+      declarations: [ ConfirmDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SendMessageDialogComponent);
+    fixture = TestBed.createComponent(ConfirmDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

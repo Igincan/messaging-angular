@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Group } from '../models/group';
 import { GroupsService } from '../services/groups.service';
-import { SendMessageDialogComponent } from './send-message-dialog/send-message-dialog.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-send',
@@ -31,7 +31,9 @@ export class SendComponent implements OnInit {
   }
 
   showSendDialog(): void {
-    let dialog = this._dialog.open(SendMessageDialogComponent, { data: this.selectedGroup?.name });
+    let dialog = this._dialog.open(ConfirmDialogComponent, {
+      data: `Are you sure you want to send this message to members of ${this.selectedGroup?.name} group?`
+    });
     dialog.afterClosed().subscribe((confirmed?: boolean) => {
       if (confirmed) {
         this._snackBar.open("Message sent!", undefined, {

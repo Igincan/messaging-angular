@@ -8,8 +8,8 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { PeopleService } from 'src/app/services/people.service';
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-database-people',
@@ -84,8 +84,8 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
   }
 
   showDeleteDialog(person: Person) {
-    let dialog = this._dialog.open(DeleteDialogComponent, {
-      data: `person ${person.firstName} ${person.lastName}`
+    let dialog = this._dialog.open(ConfirmDialogComponent, {
+      data: `Are you sure you want to delete person ${person.firstName} ${person.lastName}?`
     });
     dialog.afterClosed().subscribe((confirmed?: boolean) => {
       if (confirmed) {
