@@ -39,7 +39,7 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
     "phoneNumber",
     "group"
   ];
-  specialColumns = {
+  private readonly _specialColumns = {
     editButton: "editButton",
     deleteButton: "deleteButton"
 };
@@ -52,14 +52,27 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
   @Input() set deleteIsShowed(value: boolean) {
     this._deleteIsShowed = value;
     if (this._deleteIsShowed) {
-      this.displayedColumns.push(this.specialColumns.deleteButton);
+      this.displayedColumns.push(this._specialColumns.deleteButton);
     } else {
       this.displayedColumns = this.displayedColumns
-        .filter((column) => column !== this.specialColumns.deleteButton);
+        .filter((column) => column !== this._specialColumns.deleteButton);
     }
   }
   get deleteIsShowed() {
     return this._deleteIsShowed;
+  }
+  _editIsShowed: boolean = false;
+  @Input() set editIsShowed(value: boolean) {
+    this._editIsShowed = value;
+    if (this._editIsShowed) {
+      this.displayedColumns.push(this._specialColumns.editButton);
+    } else {
+      this.displayedColumns = this.displayedColumns
+        .filter((column) => column !== this._specialColumns.editButton);
+    }
+  }
+  get editIsShowed() {
+    return this._editIsShowed;
   }
 
   constructor(
