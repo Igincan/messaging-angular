@@ -10,6 +10,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { PeopleService } from 'src/app/services/people.service';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+import { PersonDialogComponent } from '../person-dialog/person-dialog.component';
+import { FormType } from 'src/app/models/enums/form-type';
+import { PersonDialogInject } from 'src/app/models/dialog-injects/person-dialog-inject';
 
 @Component({
   selector: 'app-database-people',
@@ -42,7 +45,7 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
   private readonly _specialColumns = {
     editButton: "editButton",
     deleteButton: "deleteButton"
-};
+  };
   filterInput: string = "";
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -65,7 +68,11 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
   @Input() set editIsShowed(value: boolean) {
     this._editIsShowed = value;
     if (this._editIsShowed) {
-      this.displayedColumns.push(this._specialColumns.editButton);
+      if (this.displayedColumns.length === 5) {
+        this.displayedColumns.splice(4, 0, this._specialColumns.editButton);
+      } else {
+        this.displayedColumns.push(this._specialColumns.editButton);
+      }
     } else {
       this.displayedColumns = this.displayedColumns
         .filter((column) => column !== this._specialColumns.editButton);
@@ -96,7 +103,7 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
     }
   }
 
-  showDeleteDialog(person: Person) {
+  showDeleteDialog(person: Person): void {
     let dialog = this._dialog.open(ConfirmDialogComponent, {
       data: `Are you sure you want to delete person ${person.firstName} ${person.lastName}?`
     });
@@ -109,6 +116,32 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
           });
           this.people = this.people.filter((filterPerson) => filterPerson.id !== person.id);
         })
+      }
+    });
+  }
+
+  showEditPersonDialog(person: Person): void {
+    let dialog = this._dialog.open(PersonDialogComponent, {
+      data: {
+        person: { ...person },
+        groups: this.groups,
+        type: FormType.EDIT
+      } as PersonDialogInject
+    });
+    dialog.afterClosed().subscribe((person?: Person) => {
+      if (person) {
+        this._peopleService.editPerson(person).subscribe((newPerson: Person) => {
+          let index = this.people.findIndex((findPerson) => findPerson.id === newPerson.id);
+          this.people[index] = newPerson;
+          this.people[index].groupName = this.groups.find((group) => {
+            return group.id === this.people[index].groupId
+          })?.name;
+          this._snackBar.open("Person edited!", undefined, {
+            duration: 4000,
+            horizontalPosition: "start"
+          });
+          this.people = this.people.slice();
+        });
       }
     });
   }

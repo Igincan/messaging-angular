@@ -1,6 +1,6 @@
 <!-- TODO - add to angular forms -->
 
-<h1 mat-dialog-title>Add Person</h1>
+<h1 mat-dialog-title>{{data.type}} Person</h1>
 <mat-dialog-content class="mat-typography">
   <p>Enter full name:</p>
   <mat-form-field appearance="fill">
@@ -15,7 +15,7 @@
   <mat-form-field appearance="fill" class="wide-field">
     <mat-label>Select</mat-label>
     <mat-select [(ngModel)]="person.groupId">
-      <mat-option *ngFor="let group of groups" [value]="group.id">
+      <mat-option *ngFor="let group of data.groups" [value]="group.id">
         {{group.name}}
       </mat-option>
     </mat-select>
@@ -28,5 +28,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button [mat-dialog-close]=null>Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="person">Add</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="person">{{data.type}}</button>
 </mat-dialog-actions>

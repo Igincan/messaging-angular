@@ -29,10 +29,10 @@ import { DatabaseComponent } from './database/database.component';
 import { DatabasePeopleComponent } from './database/database-people/database-people.component';
 import { DatabaseGroupsComponent } from './database/database-groups/database-groups.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AddGroupDialogComponent } from './database/add-group-dialog/add-group-dialog.component';
-import { AddPersonDialogComponent } from './database/add-person-dialog/add-person-dialog.component';
 import { SendComponent } from './send/send.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { PersonDialogComponent } from './database/person-dialog/person-dialog.component';
+import { GroupDialogComponent } from './database/group-dialog/group-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,10 +42,10 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     DatabasePeopleComponent,
     DatabaseGroupsComponent,
     PageNotFoundComponent,
-    AddGroupDialogComponent,
-    AddPersonDialogComponent,
     SendComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    PersonDialogComponent,
+    GroupDialogComponent
   ],
   imports: [
     BrowserModule,

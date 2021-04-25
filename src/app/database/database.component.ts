@@ -10,12 +10,14 @@ import { Person } from '../models/person';
 import { PersonForm } from '../models/forms/person-form';
 import { GroupsService } from '../services/groups.service';
 import { PeopleService } from '../services/people.service';
-import { AddPersonDialogComponent } from './add-person-dialog/add-person-dialog.component';
-import { AddGroupDialogComponent } from './add-group-dialog/add-group-dialog.component';
 import { DatabasePeopleComponent } from './database-people/database-people.component';
 import { DatabaseGroupsComponent } from './database-groups/database-groups.component';
-
-enum TabType { PEOPLE, GROUPS }
+import { PersonDialogComponent } from './person-dialog/person-dialog.component';
+import { FormType } from '../models/enums/form-type';
+import { TabType } from '../models/enums/tab-type';
+import { PersonDialogInject } from '../models/dialog-injects/person-dialog-inject';
+import { GroupDialogComponent } from './group-dialog/group-dialog.component';
+import { GroupDialogInject } from '../models/dialog-injects/group-dialog-inject';
 
 @Component({
   selector: 'app-database',
@@ -31,7 +33,7 @@ export class DatabaseComponent implements OnInit {
   @ViewChild(DatabasePeopleComponent) databasePeopleComponent!: DatabasePeopleComponent;
   @ViewChild(DatabaseGroupsComponent) databaseGroupsComponent!: DatabaseGroupsComponent;
   deleteIsShowed: boolean = false;
-  editIsShowed: boolean = true;
+  editIsShowed: boolean = false;
 
   constructor(
     private _groupsService: GroupsService,
@@ -67,8 +69,11 @@ export class DatabaseComponent implements OnInit {
   }
 
   showAddPersonDialog(): void {
-    let dialog = this._dialog.open(AddPersonDialogComponent, {
-      data: this.groups
+    let dialog = this._dialog.open(PersonDialogComponent, {
+      data: {
+        groups: this.groups,
+        type: FormType.ADD
+      } as PersonDialogInject
     });
     dialog.afterClosed().subscribe((person?: PersonForm) => {
       if (person) {
@@ -86,7 +91,12 @@ export class DatabaseComponent implements OnInit {
   }
 
   showAddGroupDialog(): void {
-    this._dialog.open(AddGroupDialogComponent).afterClosed().subscribe((group?: Group) => {
+    let dialog = this._dialog.open(GroupDialogComponent, {
+      data: {
+        type: FormType.ADD
+      } as GroupDialogInject
+    });
+    dialog.afterClosed().subscribe((group?: Group) => {
       if (group) {
         this._groupsService.addGroup(group).subscribe((newGroup: Group) => {
           this.groups = this.groups.slice(); // cloning because change occurred (===)

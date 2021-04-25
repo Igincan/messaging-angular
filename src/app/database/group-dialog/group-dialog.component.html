@@ -1,6 +1,6 @@
 <!-- TODO - add to angular forms -->
 
-<h1 mat-dialog-title>Add Group</h1>
+<h1 mat-dialog-title>{{data.type}} Group</h1>
 <mat-dialog-content class="mat-typography">
   <p>Enter group name:</p>
   <mat-form-field appearance="fill" class="wide-field">
@@ -10,5 +10,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button [mat-dialog-close]=null>Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="group">Add</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="group">{{data.type}}</button>
 </mat-dialog-actions>
