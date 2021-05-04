@@ -35,12 +35,12 @@ export class DatabaseGroupsComponent implements OnInit, AfterViewInit {
     editButton: "editButton",
     deleteButton: "deleteButton"
   };
-  filterInput: string = "";
+  filterInput = "";
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   dataSource: MatTableDataSource<Group> = new MatTableDataSource(this._groups);
   @Input() filterIsShowed!: boolean;
-  _deleteIsShowed: boolean = false;
+  _deleteIsShowed = false;
   @Input() set deleteIsShowed(value: boolean) {
     this._deleteIsShowed = value;
     if (this._deleteIsShowed) {
@@ -50,10 +50,10 @@ export class DatabaseGroupsComponent implements OnInit, AfterViewInit {
         .filter((column) => column !== this._specialColumns.deleteButton);
     }
   }
-  get deleteIsShowed() {
+  get deleteIsShowed(): boolean {
     return this._deleteIsShowed;
   }
-  _editIsShowed: boolean = false;
+  _editIsShowed = false;
   @Input() set editIsShowed(value: boolean) {
     this._editIsShowed = value;
     if (this._editIsShowed) {
@@ -67,7 +67,7 @@ export class DatabaseGroupsComponent implements OnInit, AfterViewInit {
         .filter((column) => column !== this._specialColumns.editButton);
     }
   }
-  get editIsShowed() {
+  get editIsShowed(): boolean {
     return this._editIsShowed;
   }
 
@@ -93,7 +93,7 @@ export class DatabaseGroupsComponent implements OnInit, AfterViewInit {
   }
 
   showDeleteDialog(group: Group): void {
-    let dialog = this._dialog.open(ConfirmDialogComponent, {
+    const dialog = this._dialog.open(ConfirmDialogComponent, {
       data: `Are you sure you want to delete group ${group.name}?`
     });
     dialog.afterClosed().subscribe((confirmed?: boolean) => {
@@ -104,22 +104,22 @@ export class DatabaseGroupsComponent implements OnInit, AfterViewInit {
             horizontalPosition: "start"
           });
           this.groups = this.groups.filter((filterGroup) => filterGroup.id !== group.id);
-        })
+        });
       }
     });
   }
 
   showEditGroupDialog(group: Group): void {
-    let dialog = this._dialog.open(GroupDialogComponent, {
+    const dialog = this._dialog.open(GroupDialogComponent, {
       data: {
         group: { ...group },
         type: FormType.EDIT
       } as GroupDialogInject
     });
-    dialog.afterClosed().subscribe((group?: Group) => {
-      if (group) {
-        this._groupService.editGroup(group).subscribe((newGroup: Group) => {
-          let index = this.groups.findIndex((findPerson) => findPerson.id === newGroup.id);
+    dialog.afterClosed().subscribe((afterCloseGroup?: Group) => {
+      if (afterCloseGroup) {
+        this._groupService.editGroup(afterCloseGroup).subscribe((newGroup: Group) => {
+          const index = this.groups.findIndex((findPerson) => findPerson.id === newGroup.id);
           this.groups[index] = newGroup;
           this._snackBar.open("Group edited!", undefined, {
             duration: 4000,

@@ -13,7 +13,7 @@ import { PersonDialogInject } from "src/app/models/dialog-injects/person-dialog-
 export class PersonDialogComponent implements OnInit {
 
   person: PersonForm = {};
-  keyVerb: string = "";
+  keyVerb = "";
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: PersonDialogInject) { }
 

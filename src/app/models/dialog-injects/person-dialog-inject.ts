@@ -5,5 +5,5 @@ import { FormType } from "../enums/form-type";
 export interface PersonDialogInject {
   person?: PersonForm;
   groups: Group[];
-  type: FormType
+  type: FormType;
 }

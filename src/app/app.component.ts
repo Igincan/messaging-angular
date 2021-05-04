@@ -8,6 +8,8 @@ import { Title } from "@angular/platform-browser";
 })
 export class AppComponent implements OnInit {
 
+  title = "messaging-angular";
+
   constructor(private _titleService: Title) { }
 
   ngOnInit(): void {

@@ -16,7 +16,7 @@ export class SendComponent implements OnInit {
 
   groups: Group[] = [];
   selectedGroup?: Group;
-  messageText: string = "";
+  messageText = "";
 
   constructor(
     private _groupsService: GroupsService,
@@ -31,7 +31,7 @@ export class SendComponent implements OnInit {
   }
 
   showSendDialog(): void {
-    let dialog = this._dialog.open(ConfirmDialogComponent, {
+    const dialog = this._dialog.open(ConfirmDialogComponent, {
       data: `Are you sure you want to send this message to members of ${this.selectedGroup?.name} group?`
     });
     dialog.afterClosed().subscribe((confirmed?: boolean) => {

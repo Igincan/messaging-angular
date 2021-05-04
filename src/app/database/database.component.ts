@@ -29,11 +29,11 @@ export class DatabaseComponent implements OnInit {
   groups: Group[] = [];
   people: Person[] = [];
   selectedTab: TabType = TabType.PEOPLE;
-  filterIsShowed: boolean = false;
+  filterIsShowed = false;
   @ViewChild(DatabasePeopleComponent) databasePeopleComponent!: DatabasePeopleComponent;
   @ViewChild(DatabaseGroupsComponent) databaseGroupsComponent!: DatabaseGroupsComponent;
-  deleteIsShowed: boolean = false;
-  editIsShowed: boolean = false;
+  deleteIsShowed = false;
+  editIsShowed = false;
 
   constructor(
     private _groupsService: GroupsService,
@@ -69,7 +69,7 @@ export class DatabaseComponent implements OnInit {
   }
 
   showAddPersonDialog(): void {
-    let dialog = this._dialog.open(PersonDialogComponent, {
+    const dialog = this._dialog.open(PersonDialogComponent, {
       data: {
         groups: this.groups,
         type: FormType.ADD
@@ -91,7 +91,7 @@ export class DatabaseComponent implements OnInit {
   }
 
   showAddGroupDialog(): void {
-    let dialog = this._dialog.open(GroupDialogComponent, {
+    const dialog = this._dialog.open(GroupDialogComponent, {
       data: {
         type: FormType.ADD
       } as GroupDialogInject
@@ -113,9 +113,9 @@ export class DatabaseComponent implements OnInit {
   getAddToolTip(): string {
     switch (this.selectedTab) {
       case TabType.PEOPLE:
-        return "Add new person"
+        return "Add new person";
       case TabType.GROUPS:
-        return "Add new group"
+        return "Add new group";
     }
   }
 
