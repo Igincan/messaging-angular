@@ -1,25 +1,27 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from "@angular/core";
 
-import { Person } from 'src/app/models/person';
-import { Group } from 'src/app/models/group';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
+import { Person } from "src/app/models/person";
+import { Group } from "src/app/models/group";
+import { MatSort } from "@angular/material/sort";
+import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
-import { PeopleService } from 'src/app/services/people.service';
-import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
-import { PersonDialogComponent } from '../person-dialog/person-dialog.component';
-import { FormType } from 'src/app/models/enums/form-type';
-import { PersonDialogInject } from 'src/app/models/dialog-injects/person-dialog-inject';
+import { PeopleService } from "src/app/services/people.service";
+import { ConfirmDialogComponent } from "src/app/confirm-dialog/confirm-dialog.component";
+import { PersonDialogComponent } from "../person-dialog/person-dialog.component";
+import { FormType } from "src/app/models/enums/form-type";
+import { PersonDialogInject } from "src/app/models/dialog-injects/person-dialog-inject";
 
 @Component({
-  selector: 'app-database-people',
-  templateUrl: './database-people.component.html',
-  styleUrls: ['./database-people.component.scss']
+  selector: "app-database-people",
+  templateUrl: "./database-people.component.html",
+  styleUrls: ["./database-people.component.scss"]
 })
 export class DatabasePeopleComponent implements OnInit, AfterViewInit {
+
+  a = "sss";
 
   private _people: Person[] = [];
   @Input() set people(value: Person[]) {
@@ -46,12 +48,12 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
     editButton: "editButton",
     deleteButton: "deleteButton"
   };
-  filterInput: string = "";
+  filterInput = "";
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   dataSource: MatTableDataSource<Person> = new MatTableDataSource(this._people);
   @Input() filterIsShowed!: boolean;
-  _deleteIsShowed: boolean = false;
+  _deleteIsShowed = false;
   @Input() set deleteIsShowed(value: boolean) {
     this._deleteIsShowed = value;
     if (this._deleteIsShowed) {
@@ -61,10 +63,10 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
         .filter((column) => column !== this._specialColumns.deleteButton);
     }
   }
-  get deleteIsShowed() {
+  get deleteIsShowed(): boolean {
     return this._deleteIsShowed;
   }
-  _editIsShowed: boolean = false;
+  _editIsShowed = false;
   @Input() set editIsShowed(value: boolean) {
     this._editIsShowed = value;
     if (this._editIsShowed) {
@@ -78,7 +80,7 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
         .filter((column) => column !== this._specialColumns.editButton);
     }
   }
-  get editIsShowed() {
+  get editIsShowed(): boolean {
     return this._editIsShowed;
   }
 
@@ -104,7 +106,7 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
   }
 
   showDeleteDialog(person: Person): void {
-    let dialog = this._dialog.open(ConfirmDialogComponent, {
+    const dialog = this._dialog.open(ConfirmDialogComponent, {
       data: `Are you sure you want to delete person ${person.firstName} ${person.lastName}?`
     });
     dialog.afterClosed().subscribe((confirmed?: boolean) => {
@@ -115,26 +117,26 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
             horizontalPosition: "start"
           });
           this.people = this.people.filter((filterPerson) => filterPerson.id !== person.id);
-        })
+        });
       }
     });
   }
 
   showEditPersonDialog(person: Person): void {
-    let dialog = this._dialog.open(PersonDialogComponent, {
+    const dialog = this._dialog.open(PersonDialogComponent, {
       data: {
         person: { ...person },
         groups: this.groups,
         type: FormType.EDIT
       } as PersonDialogInject
     });
-    dialog.afterClosed().subscribe((person?: Person) => {
-      if (person) {
-        this._peopleService.editPerson(person).subscribe((newPerson: Person) => {
-          let index = this.people.findIndex((findPerson) => findPerson.id === newPerson.id);
+    dialog.afterClosed().subscribe((afterClosePerson?: Person) => {
+      if (afterClosePerson) {
+        this._peopleService.editPerson(afterClosePerson).subscribe((newPerson: Person) => {
+          const index = this.people.findIndex((findPerson) => findPerson.id === newPerson.id);
           this.people[index] = newPerson;
           this.people[index].groupName = this.groups.find((group) => {
-            return group.id === this.people[index].groupId
+            return group.id === this.people[index].groupId;
           })?.name;
           this._snackBar.open("Person edited!", undefined, {
             duration: 4000,

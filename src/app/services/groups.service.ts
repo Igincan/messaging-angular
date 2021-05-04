@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 
-import { Group } from '../models/group';
-import { GroupForm } from '../models/forms/group-form';
-import { MessageResponse } from '../models/responses/message-response';
+import { Group } from "../models/group";
+import { GroupForm } from "../models/forms/group-form";
+import { MessageResponse } from "../models/responses/message-response";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class GroupsService {
 

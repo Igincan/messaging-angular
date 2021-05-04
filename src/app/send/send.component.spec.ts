@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SendComponent } from './send.component';
+import { SendComponent } from "./send.component";
 
-describe('SendComponent', () => {
+describe("SendComponent", () => {
   let component: SendComponent;
   let fixture: ComponentFixture<SendComponent>;
 
@@ -19,7 +19,7 @@ describe('SendComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

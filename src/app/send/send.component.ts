@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
-import { Group } from '../models/group';
-import { GroupsService } from '../services/groups.service';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { Group } from "../models/group";
+import { GroupsService } from "../services/groups.service";
+import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog.component";
 
 @Component({
-  selector: 'app-send',
-  templateUrl: './send.component.html',
-  styleUrls: ['./send.component.scss']
+  selector: "app-send",
+  templateUrl: "./send.component.html",
+  styleUrls: ["./send.component.scss"]
 })
 export class SendComponent implements OnInit {
 
@@ -38,7 +38,7 @@ export class SendComponent implements OnInit {
       if (confirmed) {
         this._snackBar.open("Message sent!", undefined, {
           duration: 4000,
-          horizontalPosition: 'start'
+          horizontalPosition: "start"
         });
         this.messageText = "";
         this.selectedGroup = undefined;

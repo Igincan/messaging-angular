@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { GroupService } from './group.sservice';
+import { GroupService } from "./group.sservice";
 
-describe('GroupService', () => {
+describe("GroupService", () => {
   let service: GroupService;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('GroupService', () => {
     service = TestBed.inject(GroupService);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

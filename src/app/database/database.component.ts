@@ -1,28 +1,28 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from "@angular/core";
 
-import { MatTabChangeEvent } from '@angular/material/tabs';
+import { MatTabChangeEvent } from "@angular/material/tabs";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { MatSlideToggleChange } from "@angular/material/slide-toggle";
 
-import { Group } from '../models/group';
-import { Person } from '../models/person';
-import { PersonForm } from '../models/forms/person-form';
-import { GroupsService } from '../services/groups.service';
-import { PeopleService } from '../services/people.service';
-import { DatabasePeopleComponent } from './database-people/database-people.component';
-import { DatabaseGroupsComponent } from './database-groups/database-groups.component';
-import { PersonDialogComponent } from './person-dialog/person-dialog.component';
-import { FormType } from '../models/enums/form-type';
-import { TabType } from '../models/enums/tab-type';
-import { PersonDialogInject } from '../models/dialog-injects/person-dialog-inject';
-import { GroupDialogComponent } from './group-dialog/group-dialog.component';
-import { GroupDialogInject } from '../models/dialog-injects/group-dialog-inject';
+import { Group } from "../models/group";
+import { Person } from "../models/person";
+import { PersonForm } from "../models/forms/person-form";
+import { GroupsService } from "../services/groups.service";
+import { PeopleService } from "../services/people.service";
+import { DatabasePeopleComponent } from "./database-people/database-people.component";
+import { DatabaseGroupsComponent } from "./database-groups/database-groups.component";
+import { PersonDialogComponent } from "./person-dialog/person-dialog.component";
+import { FormType } from "../models/enums/form-type";
+import { TabType } from "../models/enums/tab-type";
+import { PersonDialogInject } from "../models/dialog-injects/person-dialog-inject";
+import { GroupDialogComponent } from "./group-dialog/group-dialog.component";
+import { GroupDialogInject } from "../models/dialog-injects/group-dialog-inject";
 
 @Component({
-  selector: 'app-database',
-  templateUrl: './database.component.html',
-  styleUrls: ['./database.component.scss']
+  selector: "app-database",
+  templateUrl: "./database.component.html",
+  styleUrls: ["./database.component.scss"]
 })
 export class DatabaseComponent implements OnInit {
 
@@ -83,7 +83,7 @@ export class DatabaseComponent implements OnInit {
           this.people.push(newPerson);
           this._snackBar.open("Person added!", undefined, {
             duration: 4000,
-            horizontalPosition: 'start'
+            horizontalPosition: "start"
           });
         });
       }
@@ -103,7 +103,7 @@ export class DatabaseComponent implements OnInit {
           this.groups.push(newGroup);
           this._snackBar.open("Group added!", undefined, {
             duration: 4000,
-            horizontalPosition: 'start'
+            horizontalPosition: "start"
           });
         });
       }

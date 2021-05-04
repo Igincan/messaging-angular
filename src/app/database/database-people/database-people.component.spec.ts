@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { DatabasePeopleComponent } from './database-people.component';
+import { DatabasePeopleComponent } from "./database-people.component";
 
-describe('DatabasePeopleComponent', () => {
+describe("DatabasePeopleComponent", () => {
   let component: DatabasePeopleComponent;
   let fixture: ComponentFixture<DatabasePeopleComponent>;
 
@@ -19,7 +19,7 @@ describe('DatabasePeopleComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

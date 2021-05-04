@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 
-import { Person } from '../models/person';
+import { Person } from "../models/person";
 import { PersonForm } from "../models/forms/person-form";
-import { MessageResponse } from '../models/responses/message-response';
+import { MessageResponse } from "../models/responses/message-response";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class PeopleService {
 

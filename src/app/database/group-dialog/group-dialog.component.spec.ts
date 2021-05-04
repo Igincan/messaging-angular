@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { GroupDialogComponent } from './group-dialog.component';
+import { GroupDialogComponent } from "./group-dialog.component";
 
-describe('GroupDialogComponent', () => {
+describe("GroupDialogComponent", () => {
   let component: GroupDialogComponent;
   let fixture: ComponentFixture<GroupDialogComponent>;
 
@@ -19,7 +19,7 @@ describe('GroupDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

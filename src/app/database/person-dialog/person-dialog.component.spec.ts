@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PersonDialogComponent } from './person-dialog.component';
+import { PersonDialogComponent } from "./person-dialog.component";
 
-describe('PersonDialogComponent', () => {
+describe("PersonDialogComponent", () => {
   let component: PersonDialogComponent;
   let fixture: ComponentFixture<PersonDialogComponent>;
 
@@ -19,7 +19,7 @@ describe('PersonDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

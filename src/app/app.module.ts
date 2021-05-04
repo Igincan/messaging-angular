@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FormsModule } from "@angular/forms";
 
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
@@ -22,17 +22,17 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { DatabaseComponent } from './database/database.component';
-import { DatabasePeopleComponent } from './database/database-people/database-people.component';
-import { DatabaseGroupsComponent } from './database/database-groups/database-groups.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SendComponent } from './send/send.component';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { PersonDialogComponent } from './database/person-dialog/person-dialog.component';
-import { GroupDialogComponent } from './database/group-dialog/group-dialog.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { HomeComponent } from "./home/home.component";
+import { DatabaseComponent } from "./database/database.component";
+import { DatabasePeopleComponent } from "./database/database-people/database-people.component";
+import { DatabaseGroupsComponent } from "./database/database-groups/database-groups.component";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { SendComponent } from "./send/send.component";
+import { ConfirmDialogComponent } from "./confirm-dialog/confirm-dialog.component";
+import { PersonDialogComponent } from "./database/person-dialog/person-dialog.component";
+import { GroupDialogComponent } from "./database/group-dialog/group-dialog.component";
 
 @NgModule({
   declarations: [
