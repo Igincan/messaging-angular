@@ -14,12 +14,8 @@ export class PeopleService {
 
   constructor(private _http: HttpClient) { }
 
-  private _httpOption = {
-    headers: new HttpHeaders({ "Content-Type": "application/json" })
-  };
-
   getAllPeople(): Observable<Person[]> {
-    return this._http.get<Person[]>("/api/allPeople", this._httpOption);
+    return this._http.get<Person[]>("/api/allPeople");
   }
 
   getPerson(id: number): Observable<Person> {

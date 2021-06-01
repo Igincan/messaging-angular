@@ -1,0 +1,9 @@
+@import "../../styles/variables";
+
+.content {
+  padding: $content-padding;
+  mat-card {
+    width: 20rem;
+    margin: auto;
+  }
+}

@@ -1,0 +1,22 @@
+<div class="content">
+  <mat-card class="mat-elevation-z4">
+    <mat-card-content>
+
+      <p>Username:</p>
+      <mat-form-field appearance="fill" class="wide-field">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="credentialsForm.username">
+      </mat-form-field>
+
+      <p>Password:</p>
+      <mat-form-field appearance="fill" class="wide-field">
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="credentialsForm.password">
+      </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" align="end" (click)="login()">Login</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

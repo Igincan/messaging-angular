@@ -7,4 +7,7 @@ mat-toolbar {
       height: 2.25rem;
     }
   }
+  > .spacer {
+    flex: 1 1 auto;
+  }
 }

@@ -33,6 +33,7 @@ import { SendComponent } from "./send/send.component";
 import { ConfirmDialogComponent } from "./confirm-dialog/confirm-dialog.component";
 import { PersonDialogComponent } from "./database/person-dialog/person-dialog.component";
 import { GroupDialogComponent } from "./database/group-dialog/group-dialog.component";
+import { LoginComponent } from "./login/login.component";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { GroupDialogComponent } from "./database/group-dialog/group-dialog.compo
     SendComponent,
     ConfirmDialogComponent,
     PersonDialogComponent,
-    GroupDialogComponent
+    GroupDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

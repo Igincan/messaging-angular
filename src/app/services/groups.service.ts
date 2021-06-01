@@ -14,12 +14,8 @@ export class GroupsService {
 
   constructor(private _http: HttpClient) { }
 
-  private _httpOption = {
-    headers: new HttpHeaders({ "Content-Type": "application/json" })
-  };
-
   getAllGroups(): Observable<Group[]> {
-    return this._http.get<Group[]>("/api/allGroups", this._httpOption);
+    return this._http.get<Group[]>("/api/allGroups");
   }
 
   getGroup(id: number): Observable<Group> {
