@@ -16,7 +16,10 @@
       </mat-form-field>
 
       <div class="button-div">
-        <button mat-button (click)="login()">Login</button>
+        <button mat-button (click)="login()" [disabled]="isLogging">
+          <mat-spinner diameter="27.5" *ngIf="isLogging"></mat-spinner>
+          <span *ngIf="!isLogging">Login</span>
+        </button>
       </div>
 
     </mat-card-content>

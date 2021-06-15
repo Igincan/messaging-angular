@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
+import { MatSnackBar } from "@angular/material/snack-bar";
+
 import { CredentialsForm } from "../models/forms/credentials-form";
 import { UserService } from "../services/user.service";
 
@@ -11,14 +13,22 @@ import { UserService } from "../services/user.service";
 export class LoginComponent implements OnInit {
 
   credentialsForm: CredentialsForm = {};
+  isLogging = false;
 
-  constructor(private _userService: UserService) { }
+  constructor(
+    private _userService: UserService,
+    private _snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
   }
 
   login(): void {
-    this._userService.login(this.credentialsForm);
+    this.isLogging = true;
+    this._userService.login(this.credentialsForm).then((success) => {
+      this.isLogging = false;
+      this._snackBar.open("User logged in!");
+    });
   }
 
 }

@@ -112,10 +112,7 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
     dialog.afterClosed().subscribe((confirmed?: boolean) => {
       if (confirmed) {
         this._peopleService.deletePerson(person.id).subscribe(() => {
-          this._snackBar.open("Person deleted!", undefined, {
-            duration: 4000,
-            horizontalPosition: "start"
-          });
+          this._snackBar.open("Person deleted!");
           this.people = this.people.filter((filterPerson) => filterPerson.id !== person.id);
         });
       }
@@ -138,10 +135,7 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
           this.people[index].groupName = this.groups.find((group) => {
             return group.id === this.people[index].groupId;
           })?.name;
-          this._snackBar.open("Person edited!", undefined, {
-            duration: 4000,
-            horizontalPosition: "start"
-          });
+          this._snackBar.open("Person edited!");
           this.people = this.people.slice();
         });
       }

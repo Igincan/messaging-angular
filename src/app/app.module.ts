@@ -16,7 +16,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from "@angular/material/snack-bar";
 import { MatSortModule } from "@angular/material/sort";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatTooltipModule } from "@angular/material/tooltip";
@@ -73,7 +73,15 @@ import { LoginComponent } from "./login/login.component";
     MatTooltipModule,
     MatSlideToggleModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: {
+        horizontalPosition: "start",
+        duration: 4000
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

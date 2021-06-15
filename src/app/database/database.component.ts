@@ -81,10 +81,7 @@ export class DatabaseComponent implements OnInit {
           this.people = this.people.slice(); // cloning because change occurred (===)
           newPerson.groupName = this.groups.filter((group) => group.id === person.groupId)[0].name;
           this.people.push(newPerson);
-          this._snackBar.open("Person added!", undefined, {
-            duration: 4000,
-            horizontalPosition: "start"
-          });
+          this._snackBar.open("Person added!");
         });
       }
     });
@@ -101,10 +98,7 @@ export class DatabaseComponent implements OnInit {
         this._groupsService.addGroup(group).subscribe((newGroup: Group) => {
           this.groups = this.groups.slice(); // cloning because change occurred (===)
           this.groups.push(newGroup);
-          this._snackBar.open("Group added!", undefined, {
-            duration: 4000,
-            horizontalPosition: "start"
-          });
+          this._snackBar.open("Group added!");
         });
       }
     });

@@ -1,11 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
-import { Observable, of } from "rxjs";
-
-import { MessageResponse } from "../models/responses/message-response";
 import { CredentialsForm } from "../models/forms/credentials-form";
-import { User } from "../models/user";
 
 
 @Injectable({
@@ -33,7 +29,9 @@ export class UserService {
 
   async check(): Promise<boolean> {
     this.isLogged = await this._http.get<boolean>("api/isLogged").toPromise();
-    this.username = await this._http.get<string>("/api/logged").toPromise();
+    if (this.isLogged) {
+      this.username = await this._http.get<string>("/api/logged").toPromise();
+    }
     return Promise.resolve(true);
   }
 
