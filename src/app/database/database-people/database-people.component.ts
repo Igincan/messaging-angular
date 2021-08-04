@@ -21,8 +21,6 @@ import { PersonDialogInject } from "src/app/models/dialog-injects/person-dialog-
 })
 export class DatabasePeopleComponent implements OnInit, AfterViewInit {
 
-  a = "sss";
-
   private _people: Person[] = [];
   @Input() set people(value: Person[]) {
     this._people = value;
@@ -53,7 +51,7 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   dataSource: MatTableDataSource<Person> = new MatTableDataSource(this._people);
   @Input() filterIsShowed!: boolean;
-  _deleteIsShowed = false;
+  private _deleteIsShowed = false;
   @Input() set deleteIsShowed(value: boolean) {
     this._deleteIsShowed = value;
     if (this._deleteIsShowed) {
@@ -66,7 +64,7 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
   get deleteIsShowed(): boolean {
     return this._deleteIsShowed;
   }
-  _editIsShowed = false;
+  private _editIsShowed = false;
   @Input() set editIsShowed(value: boolean) {
     this._editIsShowed = value;
     if (this._editIsShowed) {
@@ -83,6 +81,8 @@ export class DatabasePeopleComponent implements OnInit, AfterViewInit {
   get editIsShowed(): boolean {
     return this._editIsShowed;
   }
+  pageSizeOptions = [5, 10, 25, 100];
+  pageSize = this.pageSizeOptions[1];
 
   constructor(
     private _dialog: MatDialog,

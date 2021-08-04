@@ -6,4 +6,4 @@ module.exports = [
       target: "http://localhost:5500",
       secure: false
   }
-]
+];

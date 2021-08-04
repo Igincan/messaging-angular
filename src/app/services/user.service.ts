@@ -28,7 +28,7 @@ export class UserService {
   }
 
   async check(): Promise<boolean> {
-    this.isLogged = await this._http.get<boolean>("api/isLogged").toPromise();
+    this.isLogged = await this._http.get<boolean>("/api/isLogged").toPromise();
     if (this.isLogged) {
       this.username = await this._http.get<string>("/api/logged").toPromise();
     }

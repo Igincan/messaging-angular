@@ -34,6 +34,7 @@ import { ConfirmDialogComponent } from "./confirm-dialog/confirm-dialog.componen
 import { PersonDialogComponent } from "./database/person-dialog/person-dialog.component";
 import { GroupDialogComponent } from "./database/group-dialog/group-dialog.component";
 import { LoginComponent } from "./login/login.component";
+import { PhoneNumberPipe } from "./pipes/phone-number.pipe";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { LoginComponent } from "./login/login.component";
     ConfirmDialogComponent,
     PersonDialogComponent,
     GroupDialogComponent,
-    LoginComponent
+    LoginComponent,
+    PhoneNumberPipe
   ],
   imports: [
     BrowserModule,
